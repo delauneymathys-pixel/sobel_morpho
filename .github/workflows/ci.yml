@@ -1,0 +1,23 @@
+name: CI Sobel
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Installer les dépendances
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake libsdl2-dev libsdl2-ttf-dev
+
+      - name: Configurer avec CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Compiler
+        run: cmake --build build --config Release
