@@ -326,3 +326,17 @@ file(
 
 add_executable( sobel ${source_files} ${header_files})
 target_link_libraries(sobel ${SDL2_LIBRARY} ${SDL2TTF_LIBRARY} ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_EXTRA_LIB})
+
+# Tests unitaires
+enable_testing()
+
+add_executable(tests_sobel
+    tests/test_sobel.c
+    src/sobel.c
+    src/morph.c
+)
+
+target_include_directories(tests_sobel PRIVATE include generated)
+target_link_libraries(tests_sobel ${CMAKE_EXTRA_LIB})
+
+add_test(NAME UnitTests COMMAND tests_sobel)

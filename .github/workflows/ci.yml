@@ -25,3 +25,6 @@ jobs:
 
       - name: Compiler
         run: cmake --build build --config Release
+
+      - name: Lancer les tests unitaires
+        run: ctest --test-dir build --output-on-failure
