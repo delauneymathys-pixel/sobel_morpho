@@ -16,12 +16,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y cmake libsdl2-dev libsdl2-ttf-dev
 
-      - name: Configurer avec CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
-
-      - name: Compiler
-        run: cmake --build build --config Release
-      - name: Créer une vidéo factice pour le build
+      - name: Créer les fichiers dat factices
         run: |
           mkdir -p dat
           touch dat/ShakeNDry_1920x1080_120fps_420_8bit_YUV.yuv
@@ -29,3 +24,6 @@ jobs:
 
       - name: Configurer avec CMake
         run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Compiler
+        run: cmake --build build --config Release
