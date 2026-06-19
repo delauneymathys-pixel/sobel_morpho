@@ -21,3 +21,11 @@ jobs:
 
       - name: Compiler
         run: cmake --build build --config Release
+      - name: Créer une vidéo factice pour le build
+        run: |
+          mkdir -p dat
+          touch dat/ShakeNDry_1920x1080_120fps_420_8bit_YUV.yuv
+          touch dat/DejaVuSans.ttf
+
+      - name: Configurer avec CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
